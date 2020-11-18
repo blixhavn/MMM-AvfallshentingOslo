@@ -71,9 +71,9 @@ Module.register("MMM-AvfallshentingOslo", {
 
     getDom: function(){
         let wrapper = document.createElement("div");
-        wrapper.className = `align-left light bright ${this.config.size}`;
+        wrapper.className = `light bright`;
         if (this.pickupDates && Object.keys(this.pickupDates).length > 0){
-            let table = document.createElement("table");
+			let table = document.createElement("table");
             if (this.config.showHeader){
                 let hrow = document.createElement("div");
                 hrow.className = "light small align-right";
@@ -98,7 +98,7 @@ Module.register("MMM-AvfallshentingOslo", {
 						row.appendChild(cell);
 					}
 					if(this.config.displayTrashType) {
-						row.appendChild(this.getCell(trashType, "align-left light"));
+						row.appendChild(this.getCell(trashType, "align-left small trashType light"));
 					}
 					row.appendChild(this.getCell(moment(pickupDate).local().format(this.config.dateFormat)));
 					table.appendChild(row);

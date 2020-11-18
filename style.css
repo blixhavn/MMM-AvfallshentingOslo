@@ -2,3 +2,15 @@
     width: 3rem;
     margin-right: 0.2rem;
 }
+
+.MMM-AvfallshentingOslo table {
+    width: auto;
+}
+.region.right .MMM-AvfallshentingOslo table {
+    float: right;
+}
+
+
+.MMM-AvfallshentingOslo .trashType {
+    padding-right: 1rem;
+}
