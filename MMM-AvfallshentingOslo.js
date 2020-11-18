@@ -45,13 +45,13 @@ Module.register("MMM-AvfallshentingOslo", {
 		src = "/modules/MMM-AvfallshentingOslo/img/"
 		switch(trashType) {
 			case 'Restavfall':
-				src += "restavfall.jpg";
+				src += "restavfall.svg";
 				break;
 			case "Restavfall til forbrenning":
 				src += "brennbar-rest.jpg";
 				break;
 			case "Papir":
-				src += "papir.jpg";
+				src += "papir.svg";
 				break;
 		}
 		let icon = document.createElement("img");
@@ -100,7 +100,7 @@ Module.register("MMM-AvfallshentingOslo", {
 					if(this.config.displayTrashType) {
 						row.appendChild(this.getCell(trashType, "align-left light"));
 					}
-					row.appendChild(this.getCell(moment(pickupDate).local().format(this.config.dateFormat), "align-right"));
+					row.appendChild(this.getCell(moment(pickupDate).local().format(this.config.dateFormat)));
 					table.appendChild(row);
 				}
 			}
