@@ -34,7 +34,7 @@ module.exports = NodeHelper.create({
             }
     
             if(Object.keys(pickup_dates).length == 0) {
-                Log.error(`${self.name}: No trash pickup found for configured address`);
+                Log.error(`${self.name}: No waste pickup found for configured address`);
             }
             self.sendSocketNotification('PICKUP_DATES', pickup_dates);
         });

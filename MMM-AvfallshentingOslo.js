@@ -1,13 +1,13 @@
 Module.register("MMM-AvfallshentingOslo", {
     defaults: {
-		address: 'Slottsplassen 1',
-		dateFormat: 'dddd Do MMMM',
-        showHeader: false,
-        updateSpeed: 1000,
+		address: "Maridalsveien 52",
+		dateFormat: "dddd Do MMM",
+		showHeader: true,
+		updateSpeed: 1000,
 		refresh: 3600,
 		displayIcons: true,
-		displayTrashType: false,
-        exclusions: [],
+		displayWasteType: false,
+		exclusions: ["Restavfall"],
     },
 
     getScripts: function() {
@@ -41,9 +41,9 @@ Module.register("MMM-AvfallshentingOslo", {
 		this.sendSocketNotification("GET_PICKUP_DATES", this.config.address);
 	},
 
-	getImage: function(trashType) {
+	getImage: function(wasteType) {
 		src = "/modules/MMM-AvfallshentingOslo/img/"
-		switch(trashType) {
+		switch(wasteType) {
 			case 'Restavfall':
 				src += "restavfall.svg";
 				break;
@@ -77,7 +77,7 @@ Module.register("MMM-AvfallshentingOslo", {
             if (this.config.showHeader){
                 let hrow = document.createElement("div");
                 hrow.className = "light small align-right";
-                hrow.innerHTML = this.translate('trash_pickup_header')
+                hrow.innerHTML = this.translate('waste_pickup_header')
                 wrapper.appendChild(hrow);
 			}
 			if(Object.keys(this.pickupDates).includes('error')) {
@@ -85,20 +85,20 @@ Module.register("MMM-AvfallshentingOslo", {
 				row.appendChild(this.getCell(this.pickupDates.error));
 				table.appendChild(row);
 			} else {
-				for (const [trashType, pickupDate] of Object.entries(this.pickupDates)){
+				for (const [wasteType, pickupDate] of Object.entries(this.pickupDates)){
 					let exclusions = this.config.exclusions.map( (excl) => { return excl.toLowerCase(); } );
-					if (exclusions.includes(trashType.toLowerCase())){
+					if (exclusions.includes(wasteType.toLowerCase())){
 						continue;
 					}
 					let row = document.createElement("tr");
 					row.className += "medium";
 					if(this.config.displayIcons) {
 						let cell = document.createElement("td");
-						cell.appendChild(this.getImage(trashType))
+						cell.appendChild(this.getImage(wasteType))
 						row.appendChild(cell);
 					}
-					if(this.config.displayTrashType) {
-						row.appendChild(this.getCell(trashType, "align-left small trashType light"));
+					if(this.config.displayWasteType) {
+						row.appendChild(this.getCell(wasteType, "align-left small wasteType light"));
 					}
 					row.appendChild(this.getCell(moment(pickupDate).local().format(this.config.dateFormat)));
 					table.appendChild(row);
@@ -113,9 +113,6 @@ Module.register("MMM-AvfallshentingOslo", {
 
     socketNotificationReceived: function(message, payload){
         if (message === "PICKUP_DATES"){
-			if (Object.keys(payload).length == 0) {
-				Log.error("No trash pickup found for configured address");
-			}
 			this.pickupDates = payload;
             this.updateDom(this.config.updateSpeed);
         }
