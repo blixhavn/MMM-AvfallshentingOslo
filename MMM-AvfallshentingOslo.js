@@ -15,7 +15,7 @@ Module.register("MMM-AvfallshentingOslo", {
 	},
 
 	getStyles: function () {
-		return ["style.css"];
+		return [this.file("style.css")];
 	  },
 	
     getTranslations: function() {
