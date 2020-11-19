@@ -1,0 +1,16 @@
+{
+  "name": "mmm-avfallshentingoslo",
+  "version": "1.0.0",
+  "description": "A module to show the next waste pickup dates for any address in Oslo, Norway",
+  "main": "MMM-Avfallshenting.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Øystein Blixhavn",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "moment": "^2.29.1"
+  }
+}
