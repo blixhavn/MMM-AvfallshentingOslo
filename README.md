@@ -48,7 +48,7 @@ Add the module to your configuration file, for instance:
 | exclusions          | List for waste types to exclude from the list. Needs to match the exact text, but is case insensitive.                                                                                                            | []                             |
 
 ## Feedback and contributions
-If you have any feedback , questions or suggestions, do not hesitate to make an issue on GitHub 🙂 Also, feel free to make contributions in form of pull requests!
+If you have any feedback, questions or suggestions, do not hesitate to make an issue on GitHub 🙂 Also, feel free to make contributions in form of pull requests!
 
 
 ## License 
