@@ -2,6 +2,7 @@ Module.register("MMM-AvfallshentingOslo", {
     defaults: {
 		address: "Maridalsveien 52",
 		dateFormat: "dddd Do MMM",
+		useHumanFormat: "by_week", // Accepts "strict" and "by_week"
 		showHeader: true,
 		updateSpeed: 1000,
 		refresh: 3600,
@@ -60,6 +61,31 @@ Module.register("MMM-AvfallshentingOslo", {
 		return icon;
 	},
 
+	getDateString: function(date) {
+		const dateObj = moment(date);
+		const currentDate = moment();
+		if(this.config.useHumanFormat == "by_week") {
+			const weeksUntil = dateObj.week() - currentDate.week();
+			if(weeksUntil === 0) {
+				return dateObj.format("dddd");
+			} else if (weeksUntil === 1) {
+				return this.translate("next_dow", {day: dateObj.format("dddd")});
+			} else {
+				return dateObj.format(this.config.dateFormat);
+			}
+		} else if(this.config.useHumanFormat == "strict") {
+			let daysUntil = dateObj.diff(currentDate, "days");
+			if(daysUntil < 7) {
+				return dateObj.format("dddd");
+			} else if (daysUntil < 13) {
+				return this.translate("next_dow", {day: dateObj.format("dddd")});
+			} else {
+				return dateObj.format(this.config.dateFormat);
+			}
+		}
+		return dateObj.format(this.config.dateFormat);
+	},
+
     getCell: function(cellText, className) {
         let cell = document.createElement("td");
         if (!!className) {
@@ -100,7 +126,7 @@ Module.register("MMM-AvfallshentingOslo", {
 					if(this.config.displayWasteType) {
 						row.appendChild(this.getCell(wasteType, "align-left small wasteType light"));
 					}
-					row.appendChild(this.getCell(moment(pickupDate).local().format(this.config.dateFormat)));
+					row.appendChild(this.getCell(this.getDateString(pickupDate), 'date'));
 					table.appendChild(row);
 				}
 			}

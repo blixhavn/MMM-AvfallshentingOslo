@@ -1,3 +1,4 @@
 {
-    "waste_pickup_header": "Søppeltømming"
+    "waste_pickup_header": "Søppeltømming",
+    "next_dow": "Neste {day}"
 }

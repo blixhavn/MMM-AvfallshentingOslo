@@ -10,6 +10,9 @@
     float: right;
 }
 
+.MMM-AvfallshentingOslo .date:first-letter  {
+    text-transform: uppercase;
+}
 
 .MMM-AvfallshentingOslo .trashType {
     padding-right: 1rem;

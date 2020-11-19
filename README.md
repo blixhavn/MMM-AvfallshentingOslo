@@ -28,6 +28,7 @@ Add the module to your configuration file, for instance:
         config: {
             address: "Maridalsveien 52",
             dateFormat: "dddd Do MMM",
+            useHumanFormat: "by_week",
             showHeader: false,
             updateSpeed: 1000,
             refresh: 3600,
@@ -45,6 +46,7 @@ Add the module to your configuration file, for instance:
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
 | address       | Street address to provide to the lookup service. Typically your home address.                                                                                   | "Slottsplassen 1"                         |
 | dateFormat     | String specifying the date format for the Moment.js library. [See documentation here](https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/).                                                  | "dddd Do MMMM" |
+| useHumanFormat     | Accepts options "strict", "by_week", and "no". As the "Next thursday" phrase can be interpreted differently, I've included two options. `strict` means that any date within a week (7 days) will display the weekday, while dates between one and two weeks away will display "Next {weekday}". `by_week` will display "Next {weekday}" if the date is within the date range for next week (e.g. on friday it will display "Next monday" for the upcoming monday). |"no"                            |
 | showHeader     | Boolean for whether or not to display header for the module (see example in image above) | false                            |
 | updateSpeed                 | Transition speed when updating the display.                                                                                                                                                                                 | 1000                      |
 | refresh        | Refresh interval for polling the website for new information.                                                                                                                      | 3600                             |
