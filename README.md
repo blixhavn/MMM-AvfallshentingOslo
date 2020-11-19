@@ -15,6 +15,11 @@ Clone the repository
 
     git clone https://github.com/blixhavn/MMM-AvfallshentingOslo.git
 
+Install the dependencies
+
+    cd MMM-AvfallshentingOslo
+    npm install
+
 Add the module to your configuration file, for instance:
 
     {
@@ -46,6 +51,7 @@ Add the module to your configuration file, for instance:
 | displayIcons          | Boolean for whether or not to display waste icons. Uses the [official waste icons](https://sortere.no/avfallssymboler) for Norway.                                                                                                                          | true                             |
 | displayWasteType          | Boolean for whether or not to display waste type text.                                                                                                             | false                             |
 | exclusions          | List for waste types to exclude from the list. Needs to match the exact text, but is case insensitive.                                                                                                            | []                             |
+
 
 ## Feedback and contributions
 If you have any feedback, questions or suggestions, do not hesitate to make an issue on GitHub 🙂 Also, feel free to make contributions in form of pull requests!
