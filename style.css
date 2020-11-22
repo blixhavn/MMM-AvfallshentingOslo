@@ -3,11 +3,17 @@
     margin-right: 0.2rem;
 }
 
-.MMM-AvfallshentingOslo table {
-    width: auto;
+.MMM-AvfallshentingOslo .module-content {
+    display: flex;
+    justify-content: center;
 }
-.region.right .MMM-AvfallshentingOslo table {
-    float: right;
+
+.region.right .MMM-AvfallshentingOslo .module-content {
+    justify-content: flex-end;
+}
+
+.region.left .MMM-AvfallshentingOslo .module-content {
+    justify-content: flex-start;
 }
 
 .MMM-AvfallshentingOslo .date:first-letter  {
