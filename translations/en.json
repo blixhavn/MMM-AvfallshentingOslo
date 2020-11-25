@@ -1,4 +1,6 @@
 {
     "waste_pickup_header": "Trash pickup dates",
-    "next_dow": "Next {day}"
+    "next_dow": "Next {day}",
+    "today": "Today",
+    "tomorrow": "Tomorrow"
 }

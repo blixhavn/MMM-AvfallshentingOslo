@@ -64,7 +64,14 @@ Module.register("MMM-AvfallshentingOslo", {
 	getDateString: function(date) {
 		const dateObj = moment(date);
 		const currentDate = moment();
-		if(this.config.useHumanFormat == "by_week") {
+		const isToday = dateObj.isSame(currentDate, 'days');
+		const isTomorrow = dateObj.diff(currentDate.startOf('day'), 'days');
+		
+		if(isToday) {
+			return this.translate("today");
+		} else if(isTomorrow) {
+			return this.translate("tomorrow");
+		} else if(this.config.useHumanFormat == "by_week") {
 			const weeksUntil = dateObj.week() - currentDate.week();
 			if(weeksUntil === 0) {
 				return dateObj.format("dddd");
