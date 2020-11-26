@@ -65,8 +65,8 @@ Module.register("MMM-AvfallshentingOslo", {
 		const dateObj = moment(date);
 		const currentDate = moment();
 		const isToday = dateObj.isSame(currentDate, 'days');
-		const isTomorrow = dateObj.diff(currentDate.startOf('day'), 'days');
-		
+		const isTomorrow = dateObj.diff(currentDate.startOf('day'), 'days') == 1;
+
 		if(isToday) {
 			return this.translate("today");
 		} else if(isTomorrow) {
